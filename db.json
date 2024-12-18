@@ -1,0 +1,7 @@
+{
+    "blogs": [
+      { "id": 1, "title": "My new travel blogs!", "body": "lorem ipsum...", "author": "Alex" },
+      { "id": 2, "title": "Importance of taking a daily shower!", "body": "lorem ipsum...", "author": "Tijan" },
+      { "id": 3, "title": "Tips on how to get shredded!", "body": "lorem ipsum...", "author": "Isha" }
+    ]
+  }
