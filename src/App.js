@@ -3,6 +3,7 @@ import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './CreateBlog';
 import About from './About';
+import BlogDetails from './BlogDetails';
 
 function App() {
   return (
@@ -11,16 +12,11 @@ function App() {
         <Navbar />
         <div className="content">
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/create" component={Create} />
+            <Route path="/blogs/:id" component={BlogDetails} />
+
             {/* Catch-all route for unmatched paths */}
             <Route>
               <div>

@@ -86,3 +86,7 @@
   color: red;
   cursor: pointer;
 }
+
+.blog-content a{
+  text-decoration: none;
+}

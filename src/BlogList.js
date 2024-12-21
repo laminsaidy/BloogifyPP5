@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 const BlogList = ({ blogs, title, handleDelete }) => {
   const [showMenu, setShowMenu] = useState(null); // Tracks which blog menu is open
@@ -13,7 +14,10 @@ const BlogList = ({ blogs, title, handleDelete }) => {
       {blogs.map((blog) => (
         <div key={blog.id} className="blog-item">
           <div className="blog-content">
-            <h3>{blog.title}</h3>
+            {/* Link added to the blog title */}
+            <Link to={`/blogs/${blog.id}`}>
+              <h3>{blog.title}</h3>
+            </Link>
             <p>{blog.body}</p>
             <p><i>By {blog.author}</i></p>
           </div>
