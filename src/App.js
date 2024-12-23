@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './CreateBlog';
 import About from './About';
 import BlogDetails from './BlogDetails';
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 function App() {
   return (
