@@ -10,19 +10,17 @@ const useFetch = (url) => {
 
     const fetchData = async () => {
       try {
-        // Simulate an API call
-        setTimeout(() => {
-          if (controller.signal.aborted) return; // Stop if the fetch is aborted
+        const response = await fetch(url, { signal: controller.signal });
+        
+        // Check if the response is ok (status code 200-299)
+        if (!response.ok) {
+          throw new Error(`Could not fetch the data, status: ${response.status}`);
+        }
 
-          const simulatedBlogs = [
-            { title: "My new travel blogs!", body: "lorem ipsum...", author: "Alex", id: 1 },
-            { title: "Importance of taking a daily shower!", body: "lorem ipsum...", author: "Tijan", id: 2 },
-            { title: "Tips on how to get shredded!", body: "lorem ipsum...", author: "Isha", id: 3 },
-          ];
-          setIsPending(false);
-          setData(simulatedBlogs);
-          setError(null);
-        }, 1000); // Simulated delay
+        const data = await response.json(); // Parse the response data as JSON
+        setIsPending(false);
+        setData(data);
+        setError(null);
       } catch (err) {
         if (err.name === "AbortError") {
           console.log("Fetch operation canceled");
@@ -39,7 +37,7 @@ const useFetch = (url) => {
     return () => controller.abort();
   }, [url]);
 
-  // Function to delete a blog by id
+  // Function to delete a blog by id (if needed later)
   const deleteBlog = (id) => {
     const newBlogs = data.filter((blog) => blog.id !== id); // Filter out the blog to delete
     setData(newBlogs); // Update the state with the new list of blogs
