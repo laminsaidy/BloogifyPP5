@@ -7,6 +7,8 @@ const BlogDetails = () => {
   const [blog, setBlog] = useState(null); // State to store the blog details
   const [isLoading, setIsLoading] = useState(true); // State for loading
   const [error, setError] = useState(null); // State for error handling
+  const [likes, setLikes] = useState(0); // State for the number of likes
+  const [dislikes, setDislikes] = useState(0); // State for the number of dislikes
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -46,6 +48,14 @@ const BlogDetails = () => {
     }
   };
 
+  const handleLike = () => {
+    setLikes(likes + 1); // Increment the like counter
+  };
+
+  const handleDislike = () => {
+    setDislikes(dislikes + 1); // Increment the dislike counter
+  };
+
   return (
     <div className="blog-details">
       {isLoading && <p>Loading...</p>}
@@ -55,6 +65,13 @@ const BlogDetails = () => {
           <h2>{blog.title}</h2>
           <p>Written by {blog.author}</p>
           <div>{blog.body}</div>
+
+          {/* Like/Dislike Buttons */}
+          <div className="reaction-buttons">
+            <button className="like-button" onClick={handleLike}>👍 Like {likes}</button>
+            <button className="dislike-button" onClick={handleDislike}>👎 Dislike {dislikes}</button>
+          </div>
+
           <div className="button-container">
             <button className="delete-button" onClick={handleDelete}>Delete</button>
           </div>

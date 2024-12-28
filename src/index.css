@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
-/* base styles */
 * {
   margin: 0;
   font-family: "Quicksand";
@@ -45,7 +42,6 @@
   margin: 40px auto;
   padding: 20px;
 }
-
 
 .blog-preview {
   padding: 10px 16px;
@@ -98,11 +94,9 @@
   font-size: 1rem;
   color: #555;
 }
-.blog-content a{
+.blog-content a {
   text-decoration: none;
 }
-
-
 
 /* blog form styling */
 .blog-form {
@@ -199,6 +193,7 @@
   }
 }
 
+/* blog details styling */
 .blog-details {
   margin: 20px auto;
   max-width: 600px;
@@ -253,5 +248,39 @@
 }
 
 .blog-details .delete-button:focus {
+  outline: none;
+}
+
+/* Like/Dislike Buttons */
+.blog-details .reaction-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.blog-details .like-button,
+.blog-details .dislike-button {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.blog-details .like-button:hover,
+.blog-details .dislike-button:hover {
+  background-color: #ddd;
+}
+
+.blog-details .like-button:active,
+.blog-details .dislike-button:active {
+  background-color: #ccc;
+}
+
+.blog-details .like-button:focus,
+.blog-details .dislike-button:focus {
   outline: none;
 }
