@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom"; 
 
 const BlogForm = () => {
-
   // State variable to store the title of the blog, initialized as an empty string.
   const [title, setTitle] = useState("");
 
@@ -16,6 +16,9 @@ const BlogForm = () => {
 
   // Store a success message after the blog is successfully submitted.
   const [successMessage, setSuccessMessage] = useState("");
+
+  // Initialize useHistory to programmatically navigate the user.
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +37,11 @@ const BlogForm = () => {
         setTimeout(() => {
           setIsLoading(false); // Stop loading after delay
           setSuccessMessage("Blog submission successful! 🎉");
+
+          // Redirect the user to the home page after a short delay
+          setTimeout(() => {
+            history.push("/"); // Navigate to the home page
+          }, 1000); // 1-second delay to display the success message
         }, 1500); // 1.5 seconds delay
       })
       .catch((error) => {
