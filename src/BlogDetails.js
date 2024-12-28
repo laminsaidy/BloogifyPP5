@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 const BlogDetails = () => {
   const { id } = useParams(); // Get the blog ID from the URL
-  const history = useHistory(); // For navigation after deletion
+  const history = useHistory(); // For navigation after deletion or editing
   const [blog, setBlog] = useState(null); // State to store the blog details
   const [isLoading, setIsLoading] = useState(true); // State for loading
   const [error, setError] = useState(null); // State for error handling
@@ -56,6 +56,10 @@ const BlogDetails = () => {
     setDislikes(dislikes + 1); // Increment the dislike counter
   };
 
+  const handleEdit = () => {
+    history.push(`/edit/${id}`); // Redirect to the edit page for the current blog
+  };
+
   return (
     <div className="blog-details">
       {isLoading && <p>Loading...</p>}
@@ -73,6 +77,10 @@ const BlogDetails = () => {
           </div>
 
           <div className="button-container">
+            {/* Edit Button */}
+            <button className="edit-button" onClick={handleEdit}>Edit</button>
+
+            {/* Delete Button */}
             <button className="delete-button" onClick={handleDelete}>Delete</button>
           </div>
         </article>

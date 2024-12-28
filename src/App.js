@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './CreateBlog';
 import About from './About';
 import BlogDetails from './BlogDetails';
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import EditBlog from './EditBlog';  // Import the EditBlog component
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
             <Route path="/about" component={About} />
             <Route path="/create" component={Create} />
             <Route path="/blogs/:id" component={BlogDetails} />
+            <Route path="/edit/:id" component={EditBlog} />  {/* Add the EditBlog route */}
 
             {/* Catch-all route for unmatched paths */}
             <Route>
