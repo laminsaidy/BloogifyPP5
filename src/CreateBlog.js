@@ -1,16 +1,46 @@
 import { useState } from "react";
 
 const BlogForm = () => {
+
+  // State variable to store the title of the blog, initialized as an empty string.
   const [title, setTitle] = useState("");
+
+  // Store the body/content of the blog, initialized as an empty string.
   const [body, setBody] = useState("");
+
+  // State variable to store the selected author for the blog post.
   const [author, setAuthor] = useState("mario");
+
+  // Tracking the loading status of the form submission.
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Store a success message after the blog is successfully submitted.
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start loading
+    setSuccessMessage(""); // Clear any previous success message
+
     const blog = { title, body, author };
 
-    console.log(blog);
-  }
+    fetch("http://localhost:5000/blogs/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog),
+    })
+      .then(() => {
+        console.log("New blog added");
+        setTimeout(() => {
+          setIsLoading(false); // Stop loading after delay
+          setSuccessMessage("Blog submission successful! 🎉");
+        }, 1500); // 1.5 seconds delay
+      })
+      .catch((error) => {
+        console.error("Error adding blog:", error);
+        setIsLoading(false); // Stop loading in case of an error
+      });
+  };
 
   return (
     <div className="blog-form">
@@ -49,9 +79,14 @@ const BlogForm = () => {
           </select>
         </div>
         <div className="form-actions">
-          <button type="submit">Submit Blog</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Submit Blog"}
+          </button>
         </div>
       </form>
+      {successMessage && (
+        <p className="success-message">{successMessage}</p>
+      )}
     </div>
   );
 };
