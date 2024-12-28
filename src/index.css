@@ -198,3 +198,60 @@
     opacity: 1;
   }
 }
+
+.blog-details {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-details article {
+  margin-bottom: 20px;
+}
+
+.blog-details h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.blog-details p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.blog-details .button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.blog-details .delete-button {
+  background-color: #f1356d;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.blog-details .delete-button:hover {
+  background-color: #e0245b;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.blog-details .delete-button:active {
+  background-color: #d0194b;
+  transform: scale(0.98);
+}
+
+.blog-details .delete-button:focus {
+  outline: none;
+}
