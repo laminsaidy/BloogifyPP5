@@ -1,6 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import CommentSection from "./CommentSection"; 
+import CommentSection from "./CommentSection";
+
+const API_URL = "http://localhost:5000"; // Your API URL
+
+// Fetch initial counts (likes and dislikes) for the blog post
+const getCounts = async (postId) => {
+  try {
+    const response = await fetch(`${API_URL}/blogs?id=${postId}`);
+    const data = await response.json();
+    if (Array.isArray(data) && data.length > 0) {
+      return { likes: data[0].likes || 0, dislikes: data[0].dislikes || 0 };
+    }
+    return { likes: 0, dislikes: 0 };
+  } catch (error) {
+    console.error("Error fetching counts:", error);
+    return { likes: 0, dislikes: 0 };
+  }
+};
+
+// Update like count in the backend
+const updateLikes = async (postId, likes) => {
+  try {
+    const response = await fetch(`${API_URL}/blogs/${postId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ likes }),
+    });
+    return response.json();
+  } catch (error) {
+    console.error("Error updating likes:", error);
+  }
+};
+
+// Update dislike count in the backend
+const updateDislikes = async (postId, dislikes) => {
+  try {
+    const response = await fetch(`${API_URL}/blogs/${postId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ dislikes }),
+    });
+    return response.json();
+  } catch (error) {
+    console.error("Error updating dislikes:", error);
+  }
+};
 
 const BlogDetails = () => {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -14,13 +59,17 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/blogs?id=${id}`);
+        const response = await fetch(`${API_URL}/blogs?id=${id}`);
         if (!response.ok) {
           throw new Error("Could not fetch the data");
         }
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
           setBlog(data[0]); // Update blog state
+          // Fetch the like/dislike counts for the blog
+          const { likes, dislikes } = await getCounts(id);
+          setLikes(likes);
+          setDislikes(dislikes);
         } else {
           setBlog(data); // Update blog state
         }
@@ -36,7 +85,7 @@ const BlogDetails = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/blogs/${id}`, {
+      const response = await fetch(`${API_URL}/blogs/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {
@@ -49,12 +98,16 @@ const BlogDetails = () => {
     }
   };
 
-  const handleLike = () => {
-    setLikes(likes + 1); // Increment the like counter
+  const handleLike = async () => {
+    const newLikes = likes + 1;
+    await updateLikes(id, newLikes); // Update the like count in the backend
+    setLikes(newLikes); // Update the state
   };
 
-  const handleDislike = () => {
-    setDislikes(dislikes + 1); // Increment the dislike counter
+  const handleDislike = async () => {
+    const newDislikes = dislikes + 1;
+    await updateDislikes(id, newDislikes); // Update the dislike count in the backend
+    setDislikes(newDislikes); // Update the state
   };
 
   const handleEdit = () => {
