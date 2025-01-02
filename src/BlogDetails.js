@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import CommentSection from "./CommentSection"; 
 
 const BlogDetails = () => {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -72,17 +73,28 @@ const BlogDetails = () => {
 
           {/* Like/Dislike Buttons */}
           <div className="reaction-buttons">
-            <button className="like-button" onClick={handleLike}>👍 Like {likes}</button>
-            <button className="dislike-button" onClick={handleDislike}>👎 Dislike {dislikes}</button>
+            <button className="like-button" onClick={handleLike}>
+              👍 Like {likes}
+            </button>
+            <button className="dislike-button" onClick={handleDislike}>
+              👎 Dislike {dislikes}
+            </button>
           </div>
 
           <div className="button-container">
             {/* Edit Button */}
-            <button className="edit-button" onClick={handleEdit}>Edit</button>
+            <button className="edit-button" onClick={handleEdit}>
+              Edit
+            </button>
 
             {/* Delete Button */}
-            <button className="delete-button" onClick={handleDelete}>Delete</button>
+            <button className="delete-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
+
+          {/* Comment Section */}
+          <CommentSection blogId={id} />
         </article>
       )}
     </div>
