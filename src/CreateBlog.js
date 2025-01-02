@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom";
 
 const BlogForm = () => {
   // State variable to store the title of the blog, initialized as an empty string.
@@ -8,8 +8,8 @@ const BlogForm = () => {
   // Store the body/content of the blog, initialized as an empty string.
   const [body, setBody] = useState("");
 
-  // State variable to store the selected author for the blog post.
-  const [author, setAuthor] = useState("mario");
+  // State variable to store the entered author for the blog post.
+  const [author, setAuthor] = useState("");
 
   // Tracking the loading status of the form submission.
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ const BlogForm = () => {
     setIsLoading(true); // Start loading
     setSuccessMessage(""); // Clear any previous success message
 
-    const blog = { title, body, author };
+    const blog = { title, body, author: author || "Anonymous" }; // Default to "Anonymous" if no author entered
 
     fetch("http://localhost:5000/blogs/", {
       method: "POST",
@@ -77,14 +77,13 @@ const BlogForm = () => {
         </div>
         <div className="form-group">
           <label htmlFor="author">Author</label>
-          <select
+          <input
             id="author"
+            type="text"
+            placeholder="Enter author name"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          >
-            <option value="mario">Vivek</option>
-            <option value="yoshi">Eylon</option>
-          </select>
+            onChange={(e) => setAuthor(e.target.value)} // Allow users to enter a name
+          />
         </div>
         <div className="form-actions">
           <button type="submit" disabled={isLoading}>
@@ -92,9 +91,7 @@ const BlogForm = () => {
           </button>
         </div>
       </form>
-      {successMessage && (
-        <p className="success-message">{successMessage}</p>
-      )}
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
 };
