@@ -7,6 +7,6 @@ const middlewares = jsonServer.defaults();
 server.use(cors());
 server.use(middlewares);
 server.use(router);
-server.listen(5000, () => {
-  console.log('JSON Server is running on http://localhost:5000');
+server.listen(8000, () => {
+  console.log('JSON Server is running on http://localhost:8000');
 });

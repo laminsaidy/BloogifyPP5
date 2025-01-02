@@ -3,7 +3,7 @@ import BlogList from "./BlogList";
 
 const Home = () => {
   // Use the custom hook to fetch blogs from the local JSON server
-  const { data: blogs, isPending, error } = useFetch("http://localhost:5000/blogs");
+  const { data: blogs, isPending, error } = useFetch("http://localhost:8000/blogposts?format=json");
 
   return (
     <div className="home">

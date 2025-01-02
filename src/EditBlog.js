@@ -4,13 +4,13 @@ import { useHistory, useParams } from 'react-router-dom';
 const EditBlog = () => {
   const { id } = useParams();
   const history = useHistory(); // Hook to handle history and redirection
-  const [blog, setBlog] = useState({ title: '', body: '' });
+  const [blog, setBlog] = useState({ title: '', content: '' });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Fetch the current blog data
     const fetchBlog = async () => {
-      const response = await fetch(`http://localhost:5000/blogs/${id}`);
+      const response = await fetch(`http://localhost:8000/blogposts/${id}`);
       const data = await response.json();
       setBlog(data);
     };
@@ -32,7 +32,7 @@ const EditBlog = () => {
 
     // Send PUT request to update the blog
     const response = await fetch(`http://localhost:5000/blogs/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -67,11 +67,11 @@ const EditBlog = () => {
           />
         </div>
         <div>
-          <label htmlFor="body">Body:</label>
+          <label htmlFor="content">content:</label>
           <textarea
-            id="body"
-            name="body"
-            value={blog.body}
+            id="content"
+            name="content"
+            value={blog.content}
             onChange={handleChange}
             required
           />

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-const API_URL = "http://localhost:5000"; // Your API URL
+const API_URL = "http://localhost:8000"; // Your API URL
 
 // Fetch initial counts (likes and dislikes) for the blog post
 const getCounts = async (postId) => {
   try {
-    const response = await fetch(`${API_URL}/blogs?id=${postId}`);
+    const response = await fetch(`${API_URL}/blogposts/${postId}`);
     const data = await response.json();
     if (Array.isArray(data) && data.length > 0) {
       return { likes: data[0].likes || 0, dislikes: data[0].dislikes || 0 };
@@ -59,7 +59,7 @@ const BlogDetails = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`${API_URL}/blogs?id=${id}`);
+        const response = await fetch(`${API_URL}/blogposts/${id}`);
         if (!response.ok) {
           throw new Error("Could not fetch the data");
         }
@@ -85,7 +85,7 @@ const BlogDetails = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${API_URL}/blogs/${id}`, {
+      const response = await fetch(`${API_URL}/blogposts/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

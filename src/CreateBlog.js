@@ -25,9 +25,9 @@ const BlogForm = () => {
     setIsLoading(true); // Start loading
     setSuccessMessage(""); // Clear any previous success message
 
-    const blog = { title, body, author: author || "Anonymous" }; // Default to "Anonymous" if no author entered
+    const blog = { title, content:body, author: null}; // Default to "Anonymous" if no author entered
 
-    fetch("http://localhost:5000/blogs/", {
+    fetch("http://localhost:8000/blogposts/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
