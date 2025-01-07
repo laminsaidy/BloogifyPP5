@@ -27,7 +27,7 @@ const BlogForm = () => {
 
     const blog = { title, content:body, author: null}; // Default to "Anonymous" if no author entered
 
-    fetch("http://localhost:8000/blogposts/", {
+    fetch("https://drf-api-5-7396418269ad.herokuapp.com/blogposts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),

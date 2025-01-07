@@ -10,7 +10,7 @@ const EditBlog = () => {
   useEffect(() => {
     // Fetch the current blog data
     const fetchBlog = async () => {
-      const response = await fetch(`http://localhost:8000/blogposts/${id}`);
+      const response = await fetch(`https://drf-api-5-7396418269ad.herokuapp.com/blogposts/${id}`);
       const data = await response.json();
       setBlog(data);
     };
@@ -31,7 +31,7 @@ const EditBlog = () => {
     setIsLoading(true);
 
     // Send PUT request to update the blog
-    const response = await fetch(`http://localhost:5000/blogs/${id}`, {
+    const response = await fetch(`https://drf-api-5-7396418269ad.herokuapp.com/blogposts/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
