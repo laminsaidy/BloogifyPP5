@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-const API_URL = "http://localhost:8000"; // Your API URL
+const API_URL = "https://drf-api-5-7396418269ad.herokuapp.com/"; // Your API URL
 
 // Fetch initial counts (likes and dislikes) for the blog post
 const getCounts = async (postId) => {

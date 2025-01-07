@@ -3,7 +3,7 @@ import BlogList from "./BlogList";
 
 const Home = () => {
   // Use the custom hook to fetch blogs from the local JSON server
-  const { data: blogs, isPending, error } = useFetch("http://localhost:8000/blogposts?format=json");
+  const { data: blogs, isPending, error } = useFetch("https://drf-api-5-7396418269ad.herokuapp.com/");
 
   return (
     <div className="home">
