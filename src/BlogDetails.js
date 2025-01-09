@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-const API_URL = "https://cuddly-computing-machine-qw64wq5w65rhx4qq-8000.app.github.dev/";
+const API_URL = "https://refactored-space-spoon-gg6rgqvg77v29655-8000.app.github.dev/";
 
 const BlogDetails = () => {
   const { id } = useParams();

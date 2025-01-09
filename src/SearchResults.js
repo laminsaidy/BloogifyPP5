@@ -1,45 +1,40 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import BlogList from './BlogList'; // Import BlogList component
 
 function SearchResults({ searchTerm }) {
   const [blogs, setBlogs] = useState([]);
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch blogs from your data source (replace with actual fetching logic)
-    const fetchedBlogs = [
-      { id: '1', title: 'My First Blog', category: 'Technology' },
-      { id: '2', title: 'Opening Party!', category: 'Lifestyle' },
-      { id: '2128', title: 'Vivek', category: 'Food' },
-    ];
-    setBlogs(fetchedBlogs);
-  }, []);
+    const fetchBlogs = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://localhost:8000/api/blogposts/search', {
+          params: { q: searchTerm }, // Pass searchTerm as query parameter
+        });
+        setBlogs(response.data); // Set fetched blogs to state
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => {
-    // Filter blogs based on the search term
-    const results = blogs.filter((blog) => {
-        const searchTermLower = searchTerm.toLowerCase();
-        return (
-          (blog.category && blog.category.toLowerCase().includes(searchTermLower)) ||
-          (blog.title && blog.title.toLowerCase().includes(searchTermLower)) ||
-          (blog.body && blog.body.toLowerCase().includes(searchTermLower)) 
-          
-        );
-      });
-    setFilteredBlogs(results); // Set filtered blogs state
-  }, [searchTerm, blogs]); // Re-run the filter whenever the searchTerm or blogs change
+    if (searchTerm) {
+      fetchBlogs();
+    } else {
+      setBlogs([]); // Clear the blogs if searchTerm is empty
+    }
+  }, [searchTerm]); // Trigger fetching whenever the searchTerm changes
 
   return (
     <div>
       <h2>Search Results for "{searchTerm}"</h2>
-      {filteredBlogs.length > 0 ? (
-        filteredBlogs.map(blog => (
-          <div key={blog.id}>
-            <h3>{blog.title}</h3>
-            <p>Category: {blog.category}</p>
-          </div>
-        ))
+      {loading ? (
+        <p>Loading...</p>
       ) : (
-        <p>No blogs found.</p>
+        <BlogList blogs={blogs} /> // Pass the blogs state to BlogList component
       )}
     </div>
   );
