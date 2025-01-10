@@ -10,3 +10,21 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
 - Leave comments on posts to engage with the content.
 - Categorize posts by topics for easier discovery.
 - View posts with an infinite scroll for seamless browsing.
+
+### Existing Features
+
+- **Blog Posts**: 
+  - Users can create, read, update, and delete blog posts.
+  - Blog posts can be categorized into different topics for better organization.
+  - Posts can contain rich text content, images, and media.
+- **Comments**: 
+  - Logged-in users can comment on blog posts.
+  - Comments are nested to allow replies.
+- **Categories**:
+  - Posts can be tagged with categories like "Technology", "Lifestyle", etc.
+  - Categories are easily filterable to help users explore posts by topic.
+- **Infinite Scroll**: 
+  - The blog post list supports infinite scrolling for seamless navigation and load on-demand.
+- **Responsive Design**: 
+  - The site adjusts seamlessly between mobile, tablet, and desktop views.
+
