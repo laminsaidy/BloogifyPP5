@@ -36,3 +36,19 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
   - Admins can manage users, posts, categories, and comments through a web-based interface.
 - **Real-time Comments**:
   - Implement WebSockets or similar technologies to allow users to see new comments in real time.
+
+## Technologies Used
+
+- **Frontend**:
+  - **React**: JavaScript library for building user interfaces.
+  - **React Router**: Routing library for navigating between different pages.
+  - **React Bootstrap**: Bootstrap-based components for responsive design.
+  - **Axios**: Promise-based HTTP client for interacting with the API.
+  - **CSS Modules**: Scoped styling to avoid conflicts across components.
+- **Backend**:
+  - **Django**: Python-based web framework for rapid development.
+  - **Django REST Framework**: Powerful toolkit for building Web APIs.
+  - **PostgreSQL**: Relational database management system for storing data.
+  - **JWT**: JSON Web Tokens for user authentication.
+
+  
