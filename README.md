@@ -99,3 +99,7 @@ These steps were taken for the deployment:
 
 - Click "View" to see the live site. 
 
+## Credits
+- Wikidipedia for the details on the Battleship game. 
+- Youtube videos on how to go by the Project. 
+- Code Institute lessons and projects.
