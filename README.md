@@ -57,6 +57,15 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
 - Use the sorting options to arrange blog posts by date, views, or likes.
 - Navigate through multiple pages of blog posts using pagination.
 
+## 🛠 Built With
+
+* HTML
+* CSS
+* JAVASCRIPT
+* PYTHON
+* DJANGO
+* DATABASE 
+
 ### Deployment
 
 This project is deployed through Heroku.
