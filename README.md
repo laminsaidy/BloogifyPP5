@@ -66,6 +66,11 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
 * DJANGO
 * DATABASE 
 
+### User Interaction
+
+- Users can like or unlike blog posts without page reload.
+- Users can also post comments on their own or other users' blog posts.
+
 ### Deployment
 
 This project is deployed through Heroku.
