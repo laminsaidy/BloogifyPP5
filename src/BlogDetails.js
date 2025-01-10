@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-const API_URL = "https://refactored-space-spoon-gg6rgqvg77v29655-8000.app.github.dev/";
+const API_URL = "https://obscure-space-happiness-vxwrxvjx56gcw7p7-8000.app.github.dev/";
 
 const BlogDetails = () => {
-  const { id } = useParams();
   const history = useHistory();
   const [blogs, setBlogs] = useState([]); // Change to an array for multiple blogs
   const [isLoading, setIsLoading] = useState(true);
