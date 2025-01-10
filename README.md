@@ -28,3 +28,11 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
 - **Responsive Design**: 
   - The site adjusts seamlessly between mobile, tablet, and desktop views.
 
+
+### Future Features 
+- **User Profiles**:
+  - Users can have customizable profiles that display their authored posts and personal information.
+- **Admin Panel**:
+  - Admins can manage users, posts, categories, and comments through a web-based interface.
+- **Real-time Comments**:
+  - Implement WebSockets or similar technologies to allow users to see new comments in real time.
