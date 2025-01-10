@@ -51,4 +51,8 @@ The goal of Blogify is to provide an easy-to-use platform for readers who likes 
   - **PostgreSQL**: Relational database management system for storing data.
   - **JWT**: JSON Web Tokens for user authentication.
 
-  
+### Blog Management
+
+- On the home page, you can view the latest blog posts.
+- Use the sorting options to arrange blog posts by date, views, or likes.
+- Navigate through multiple pages of blog posts using pagination.
